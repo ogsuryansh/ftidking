@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ChevronUp, Shield, Star, Zap } from 'lucide-react';
+import { ChevronUp, Shield, Star, Zap, Menu, X } from 'lucide-react';
 import clsx from 'clsx';
 
 const themes = {
@@ -68,6 +68,7 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
     const location = useLocation();
     const currentPath = location.pathname;
     const theme = themes[serviceColor] || themes.cyan;
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const [footerData] = useState({
         tagline: "The Ultimate Digital Services Hub",
@@ -85,6 +86,20 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
             type: i % 4 === 0 ? theme.particle : (i % 2 === 0 ? "particle-gold" : "particle-cyan")
         })), [theme.particle]
     );
+
+    // Close menu when route changes
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location.pathname]);
+
+    // Prevent scrolling when menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMenuOpen]);
 
     return (
         <div className="relative min-h-screen overflow-x-hidden font-sans">
@@ -109,11 +124,11 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
                 ))}
             </div>
 
-            <header className="relative z-20">
+            <header className="relative z-50">
                 <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
                     <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-4">
-                            <div className={`w-12 h-12 rounded-xl ${theme.bg} border ${theme.border} flex items-center justify-center shadow-lg`}>
+                        <Link to="/" className="flex items-center gap-4 group">
+                            <div className={`w-12 h-12 rounded-xl ${theme.bg} border ${theme.border} flex items-center justify-center shadow-lg transition-transform group-hover:scale-110`}>
                                 <Zap className={`w-6 h-6 ${theme.text}`} />
                             </div>
                             <div className="flex flex-col">
@@ -124,9 +139,10 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
                                     Premium Service
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                     </div>
 
+                    {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-6">
                         {navItems.map(item => {
                             const isActive = currentPath === item.path;
@@ -137,7 +153,7 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
                                     className={({ isActive }) => clsx(
                                         "px-5 py-2.5 rounded-xl text-sm font-bold tracking-wider uppercase transition-all duration-300 border backdrop-blur-sm",
                                         isActive
-                                            ? `${theme.bg} ${theme.border} ${theme.text} ${theme.glow ? `shadow-[0_0_15px_rgba(${serviceColor === 'red' ? '239,68,68' : '6,182,212'},0.4)]` : ''}`
+                                            ? `${theme.bg} ${theme.border} ${theme.text} shadow-[0_0_15px_rgba(6,182,212,0.4)]`
                                             : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20 hover:text-white"
                                     )}
                                 >
@@ -146,6 +162,79 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
                             );
                         })}
                     </nav>
+
+                    {/* Mobile Hamburger Button */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className={`md:hidden w-12 h-12 rounded-xl ${theme.bg} border ${theme.border} flex items-center justify-center transition-all active:scale-95`}
+                    >
+                        {isMenuOpen ? <X className={theme.text} /> : <Menu className={theme.text} />}
+                    </button>
+                </div>
+
+                {/* Mobile Navigation Sidepanel */}
+                <div className={clsx(
+                    "fixed inset-0 z-[60] md:hidden transition-all duration-500",
+                    isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                )}>
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/80 backdrop-blur-md"
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+
+                    {/* Panel */}
+                    <div className={clsx(
+                        "absolute top-0 right-0 h-full w-[300px] bg-black border-l border-white/10 p-8 transition-transform duration-500 shadow-2xl flex flex-col",
+                        isMenuOpen ? "translate-x-0" : "translate-x-full"
+                    )}>
+                        <div className="flex justify-between items-center mb-12">
+                            <h2 className="text-xl font-bebas tracking-widest text-white uppercase">Menu</h2>
+                            <button
+                                onClick={() => setIsMenuOpen(false)}
+                                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center"
+                            >
+                                <X className="w-5 h-5 text-white/60" />
+                            </button>
+                        </div>
+
+                        <nav className="flex flex-col gap-4">
+                            {navItems.map((item, i) => {
+                                const isActive = currentPath === item.path;
+                                return (
+                                    <NavLink
+                                        key={item.path}
+                                        to={item.path}
+                                        className={({ isActive }) => clsx(
+                                            "w-full px-6 py-4 rounded-xl text-lg font-bebas tracking-widest uppercase transition-all duration-300 border flex items-center justify-between group",
+                                            isActive
+                                                ? `${theme.bg} ${theme.border} ${theme.text} shadow-[0_0_15px_rgba(6,182,212,0.3)]`
+                                                : "bg-white/5 border-white/5 text-white/40 hover:bg-white/10 hover:border-cyan-500/20 hover:text-white"
+                                        )}
+                                        style={{ transitionDelay: `${i * 50}ms` }}
+                                    >
+                                        {item.label}
+                                        <Zap className={clsx(
+                                            "w-4 h-4 transition-all group-hover:scale-125",
+                                            isActive ? theme.text : "opacity-0 group-hover:opacity-100"
+                                        )} />
+                                    </NavLink>
+                                );
+                            })}
+                        </nav>
+
+                        <div className="mt-auto">
+                            <div className="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
+                                <p className="text-xs text-white/40 uppercase tracking-widest font-bold mb-2 text-center">Contact Support</p>
+                                <a
+                                    href="https://t.me/yourusername"
+                                    className="block w-full py-3 rounded-xl bg-cyan-500 text-black font-bebas tracking-widest uppercase text-center hover:scale-105 active:scale-95 transition-all"
+                                >
+                                    Telegram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </header>
 
