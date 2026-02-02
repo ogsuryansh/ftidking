@@ -10,22 +10,43 @@ const mockCountries = [
     {
         id: "us", name: "United States", code: "US", flag_emoji: "🇺🇸",
         services: [
-            { id: "1", courier: "UPS", price: 25, display_order: 1 },
-            { id: "2", courier: "FedEx", price: 30, display_order: 2 }
+            { id: "us1", courier: "FEDEX FTIDNA", price: 40, display_order: 1 },
+            { id: "us2", courier: "UPS FTIDNA", price: 30, display_order: 2 },
+            { id: "us3", courier: "USPS FTIDV3", price: 20, display_order: 3 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 5
     },
     {
         id: "ca", name: "Canada", code: "CA", flag_emoji: "🇨🇦",
         services: [
-            { id: "3", courier: "Canada Post", price: 20, display_order: 1 }
+            { id: "ca1", courier: "CANADA POST FTIDV3", price: 25, display_order: 1 },
+            { id: "ca2", courier: "FEDEX FTIDV3", price: 25, display_order: 2 },
+            { id: "ca3", courier: "PUROLATOR FTIDNA", price: 35, display_order: 3 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 6
     },
     {
+        id: "de", name: "Germany", code: "DE", flag_emoji: "🇩🇪",
+        services: [
+            { id: "de1", courier: "DHL EXPRESS FTIDV3", price: 50, display_order: 1 },
+            { id: "de2", courier: "DPD FTIDV3", price: 45, display_order: 2 },
+            { id: "de3", courier: "UPS FTIDV3", price: 50, display_order: 3 }
+        ],
+        weight_unit: "kg", weighted_price_per_kg: 8
+    },
+    {
+        id: "au", name: "Australia", code: "AU", flag_emoji: "🇦🇺",
+        services: [
+            { id: "au1", courier: "AUPOST FTID", price: 40, display_order: 1 },
+            { id: "au2", courier: "AUPOST LIT", price: 50, display_order: 2 }
+        ],
+        weight_unit: "kg", weighted_price_per_kg: 12
+    },
+    {
         id: "uk", name: "United Kingdom", code: "UK", flag_emoji: "🇬🇧",
         services: [
-            { id: "4", courier: "Royal Mail", price: 15, display_order: 1 }
+            { id: "uk1", courier: "Royal Mail FTID", price: 20, display_order: 1 },
+            { id: "uk2", courier: "Hermes LIT", price: 25, display_order: 2 }
         ],
         weight_unit: "kg", weighted_price_per_kg: 10
     }
