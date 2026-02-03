@@ -13,12 +13,15 @@ const mockCountries = [
             { id: "us1", courier: "FEDEX FTIDNA", price: 40, display_order: 1 },
             { id: "us_fedex_v3", courier: "FEDEX FTIDV3", price: 25, display_order: 2 },
             { id: "us_fedex_lit", courier: "FEDEX LIT", price: 35, display_order: 3 },
-            { id: "us2", courier: "UPS FTIDNA", price: 30, display_order: 4 },
-            { id: "us_ups_v3", courier: "UPS FTIDV3", price: 20, display_order: 5 },
-            { id: "us_ups_lit", courier: "UPS LIT", price: 25, display_order: 6 },
-            { id: "us3", courier: "USPS FTIDV3", price: 20, display_order: 7 },
-            { id: "us_usps_lit", courier: "USPS LIT", price: 40, display_order: 8 },
-            { id: "us_usps_rts", courier: "USPS RTS", price: 45, display_order: 9 }
+            { id: "us_fedex_ground", courier: "FEDEX UTD GROUND ONLY NO DUPLICATE", price: 45, display_order: 4 },
+            { id: "us_fedex_rts", courier: "FEDEX RTS", price: 45, display_order: 5 },
+            { id: "us2", courier: "UPS FTIDNA", price: 30, display_order: 6 },
+            { id: "us_ups_v3", courier: "UPS FTIDV3", price: 20, display_order: 7 },
+            { id: "us_ups_lit", courier: "UPS LIT", price: 25, display_order: 8 },
+            { id: "us_ups_damage", courier: "UPS DAMAGE SCAN", price: 20, display_order: 9 },
+            { id: "us3", courier: "USPS FTIDV3", price: 20, display_order: 10 },
+            { id: "us_usps_lit", courier: "USPS LIT", price: 40, display_order: 11 },
+            { id: "us_usps_rts", courier: "USPS RTS", price: 45, display_order: 12 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 5
     },
@@ -33,7 +36,22 @@ const mockCountries = [
             { id: "ca_pur_v3", courier: "PUROLATOR FTIDV3", price: 25, display_order: 6 },
             { id: "ca_ups_na", courier: "UPS FTIDNA", price: 35, display_order: 7 },
             { id: "ca_ups_v3", courier: "UPS FTIDV3", price: 25, display_order: 8 },
-            { id: "ca_ups_lit", courier: "UPS LIT", price: 30, display_order: 9 }
+            { id: "ca_ups_lit", courier: "UPS LIT", price: 30, display_order: 9 },
+            { id: "ca_ups_rts", courier: "UPS RTS", price: 50, display_order: 10 },
+            { id: "ca_ups_damage", courier: "UPS DAMAGE SCAN", price: 30, display_order: 11 },
+            { id: "ca_dpd_v3", courier: "DPD FTIDV3", price: 30, display_order: 12 },
+            { id: "ca_dpd_lit", courier: "DPD LIT", price: 35, display_order: 13 },
+            { id: "ca_dpd_rts", courier: "DPD RTS", price: 50, display_order: 14 },
+            { id: "ca_evri_v3", courier: "EVRI FTIDV3", price: 30, display_order: 15 },
+            { id: "ca_evri_lit", courier: "EVRI LIT", price: 35, display_order: 16 },
+            { id: "ca_fedex_lit_premium", courier: "FEDEX LIT (PREMIUM)", price: 90, display_order: 17 },
+            { id: "ca_inpost_lit", courier: "Inpost LIT", price: 60, display_order: 18 },
+            { id: "ca_parcelforce_v3", courier: "PARCELFORCE FTIDV3", price: 30, display_order: 19 },
+            { id: "ca_parcelforce_lit", courier: "PARCELFORCE LIT", price: 50, display_order: 20 },
+            { id: "ca_royalmail_rts", courier: "ROYAL MAIL RTS", price: 50, display_order: 21 },
+            { id: "ca_ups_v3_premium", courier: "UPS FTIDV3 (PREMIUM)", price: 30, display_order: 22 },
+            { id: "ca_yodel_v3", courier: "YODEL FTIDV3", price: 30, display_order: 23 },
+            { id: "ca_yodel_lit", courier: "YODEL LIT", price: 50, display_order: 24 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 6
     },
@@ -66,8 +84,21 @@ const mockCountries = [
     {
         id: "uk", name: "United Kingdom", code: "UK", flag_emoji: "🇬🇧",
         services: [
-            { id: "uk1", courier: "Royal Mail FTID", price: 20, display_order: 1 },
-            { id: "uk2", courier: "Hermes LIT", price: 25, display_order: 2 }
+            { id: "uk1", courier: "ROYAL MAIL FTID", price: 20, display_order: 1 },
+            { id: "uk_rm_rts", courier: "ROYAL MAIL RTS", price: 50, display_order: 2 },
+            { id: "uk_dpd_v3", courier: "DPD FTIDV3", price: 30, display_order: 3 },
+            { id: "uk_dpd_lit", courier: "DPD LIT", price: 35, display_order: 4 },
+            { id: "uk_dpd_rts", courier: "DPD RTS", price: 50, display_order: 5 },
+            { id: "uk_evri_v3", courier: "EVRI FTIDV3", price: 30, display_order: 6 },
+            { id: "uk_evri_lit", courier: "EVRI LIT", price: 35, display_order: 7 },
+            { id: "uk2", courier: "HERMES LIT", price: 25, display_order: 8 },
+            { id: "uk_fedex_lit", courier: "FEDEX LIT", price: 90, display_order: 9 },
+            { id: "uk_inpost_lit", courier: "INPOST LIT", price: 60, display_order: 10 },
+            { id: "uk_parcelforce_v3", courier: "PARCELFORCE FTIDV3", price: 30, display_order: 11 },
+            { id: "uk_parcelforce_lit", courier: "PARCELFORCE LIT", price: 50, display_order: 12 },
+            { id: "uk_ups_v3", courier: "UPS FTIDV3", price: 30, display_order: 13 },
+            { id: "uk_yodel_v3", courier: "YODEL FTIDV3", price: 30, display_order: 14 },
+            { id: "uk_yodel_lit", courier: "YODEL LIT", price: 50, display_order: 15 }
         ],
         weight_unit: "kg", weighted_price_per_kg: 10
     }
