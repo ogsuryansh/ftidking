@@ -11,8 +11,14 @@ const mockCountries = [
         id: "us", name: "United States", code: "US", flag_emoji: "🇺🇸",
         services: [
             { id: "us1", courier: "FEDEX FTIDNA", price: 40, display_order: 1 },
-            { id: "us2", courier: "UPS FTIDNA", price: 30, display_order: 2 },
-            { id: "us3", courier: "USPS FTIDV3", price: 20, display_order: 3 }
+            { id: "us_fedex_v3", courier: "FEDEX FTIDV3", price: 25, display_order: 2 },
+            { id: "us_fedex_lit", courier: "FEDEX LIT", price: 35, display_order: 3 },
+            { id: "us2", courier: "UPS FTIDNA", price: 30, display_order: 4 },
+            { id: "us_ups_v3", courier: "UPS FTIDV3", price: 20, display_order: 5 },
+            { id: "us_ups_lit", courier: "UPS LIT", price: 25, display_order: 6 },
+            { id: "us3", courier: "USPS FTIDV3", price: 20, display_order: 7 },
+            { id: "us_usps_lit", courier: "USPS LIT", price: 40, display_order: 8 },
+            { id: "us_usps_rts", courier: "USPS RTS", price: 45, display_order: 9 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 5
     },
@@ -20,8 +26,14 @@ const mockCountries = [
         id: "ca", name: "Canada", code: "CA", flag_emoji: "🇨🇦",
         services: [
             { id: "ca1", courier: "CANADA POST FTIDV3", price: 25, display_order: 1 },
-            { id: "ca2", courier: "FEDEX FTIDV3", price: 25, display_order: 2 },
-            { id: "ca3", courier: "PUROLATOR FTIDNA", price: 35, display_order: 3 }
+            { id: "ca_cp_lit", courier: "CANADA POST LIT", price: 30, display_order: 2 },
+            { id: "ca2", courier: "FEDEX FTIDV3", price: 25, display_order: 3 },
+            { id: "ca_fedex_lit", courier: "FEDEX LIT", price: 30, display_order: 4 },
+            { id: "ca3", courier: "PUROLATOR FTIDNA", price: 35, display_order: 5 },
+            { id: "ca_pur_v3", courier: "PUROLATOR FTIDV3", price: 25, display_order: 6 },
+            { id: "ca_ups_na", courier: "UPS FTIDNA", price: 35, display_order: 7 },
+            { id: "ca_ups_v3", courier: "UPS FTIDV3", price: 25, display_order: 8 },
+            { id: "ca_ups_lit", courier: "UPS LIT", price: 30, display_order: 9 }
         ],
         weight_unit: "lb", weighted_price_per_lb: 6
     },
@@ -29,8 +41,17 @@ const mockCountries = [
         id: "de", name: "Germany", code: "DE", flag_emoji: "🇩🇪",
         services: [
             { id: "de1", courier: "DHL EXPRESS FTIDV3", price: 50, display_order: 1 },
-            { id: "de2", courier: "DPD FTIDV3", price: 45, display_order: 2 },
-            { id: "de3", courier: "UPS FTIDV3", price: 50, display_order: 3 }
+            { id: "de_dhl_v3", courier: "DHL FTIDV3", price: 30, display_order: 2 },
+            { id: "de_dhl_lit", courier: "DHL LIT", price: 35, display_order: 3 },
+            { id: "de_dhl_rts", courier: "DHL RTS", price: 40, display_order: 4 },
+            { id: "de2", courier: "DPD FTIDV3", price: 45, display_order: 5 },
+            { id: "de_dpd_lit", courier: "DPD LIT", price: 50, display_order: 6 },
+            { id: "de_dpd_rts", courier: "DPD RTS", price: 45, display_order: 7 },
+            { id: "de_gls_v3", courier: "GLS FTIDV3", price: 45, display_order: 8 },
+            { id: "de_gls_lit", courier: "GLS LIT", price: 50, display_order: 9 },
+            { id: "de_hermes_v3", courier: "HERMES FTIDV3", price: 40, display_order: 10 },
+            { id: "de3", courier: "UPS FTIDV3", price: 50, display_order: 11 },
+            { id: "de_ups_lit", courier: "UPS LIT", price: 50, display_order: 12 }
         ],
         weight_unit: "kg", weighted_price_per_kg: 8
     },
