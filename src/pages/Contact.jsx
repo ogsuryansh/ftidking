@@ -61,19 +61,19 @@ const Contact = () => {
                             icon={Send}
                             title="Contact us"
                             description="Ready to order? Contact us for place your order and get started fast."
-                            link="https://t.me/yourusername"
+                            link="https://t.me/ftidkingg"
                         />
                         <ContactCard
                             icon={Zap}
                             title="Main Channel"
                             description="Stay updated on the hottest stores, exclusive promotions and important updates."
-                            link="https://t.me/yourchannel"
+                            link="https://t.me/+0baCgaxlYZ4xZGQx"
                         />
                         <ContactCard
                             icon={MessageCircle}
                             title="Group Chat"
                             description="Join our open chat and connect with money-minded people like you."
-                            link="https://t.me/yourgroup"
+                            link="https://t.me/+tcprGVazrzk5OGYx"
                         />
                     </div>
                 </div>
