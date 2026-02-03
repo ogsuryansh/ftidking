@@ -72,7 +72,7 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
 
     const [footerData] = useState({
         tagline: "The Ultimate Digital Services Hub",
-        copyright: "© 2025 Sonic. All rights reserved."
+        copyright: "© 2026 FTIDKING. All rights reserved."
     });
 
     const particles = useMemo(() =>
@@ -227,7 +227,9 @@ const ServiceLayout = ({ children, serviceName, serviceColor, navItems }) => {
                             <div className="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
                                 <p className="text-xs text-white/40 uppercase tracking-widest font-bold mb-2 text-center">Contact Support</p>
                                 <a
-                                    href="https://t.me/yourusername"
+                                    href="https://t.me/ftidkingg"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="block w-full py-3 rounded-xl bg-cyan-500 text-black font-bebas tracking-widest uppercase text-center hover:scale-105 active:scale-95 transition-all"
                                 >
                                     Telegram
